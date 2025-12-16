@@ -40,22 +40,83 @@ const App = () => (
                   <Route path="/admin/*" element={<Admin />} />
                   
                   {/* Regular routes with navbar */}
-                  <Route path="/*" element={
+                  <Route path="/" element={
                     <>
                       <Navbar />
                       <main className="relative z-10">
-                        <Routes>
-                          <Route path="/" element={<Home />} />
-                          <Route path="/shop" element={<Shop />} />
-                          <Route path="/product/:id" element={<ProductDetail />} />
-                          <Route path="/cart" element={<Cart />} />
-                          <Route path="/profile" element={<Profile />} />
-                          <Route path="/orders" element={<Orders />} />
-                          <Route path="/wishlist" element={<Wishlist />} />
-                          <Route path="/about" element={<About />} />
-                          <Route path="/contact" element={<Contact />} />
-                          <Route path="*" element={<NotFound />} />
-                        </Routes>
+                        <Home />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/shop" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <Shop />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/product/:id" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <ProductDetail />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/cart" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <Cart />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/profile" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <Profile />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/orders" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <Orders />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/wishlist" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <Wishlist />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/about" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <About />
+                      </main>
+                    </>
+                  } />
+                  <Route path="/contact" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <Contact />
+                      </main>
+                    </>
+                  } />
+                  <Route path="*" element={
+                    <>
+                      <Navbar />
+                      <main className="relative z-10">
+                        <NotFound />
                       </main>
                     </>
                   } />
