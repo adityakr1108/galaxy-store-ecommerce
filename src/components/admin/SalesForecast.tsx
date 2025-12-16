@@ -1,4 +1,3 @@
-
 import React, { useState, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -144,17 +143,17 @@ const SalesForecast: React.FC = () => {
   };
 
   return (
-    <Card className="theme-card">
-      <CardHeader>
+    <Card className="theme-card sales-forecast-card border-0 shadow-2xl relative overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none z-0 bg-gradient-to-br from-red-900/30 via-yellow-700/10 to-purple-900/20 animate-twinkle" />
+      <CardHeader className="z-10 relative">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <TrendingUp className="w-5 h-5 text-primary" />
-            <CardTitle className="text-foreground">Sales Forecast</CardTitle>
-            <Badge variant="outline" className="text-xs bg-yellow-500/20 text-yellow-400 border-yellow-500/30">
+            <TrendingUp className="w-5 h-5 text-primary animate-bounce" />
+            <CardTitle className="text-foreground text-2xl font-extrabold tracking-tight drop-shadow-lg">Sales Forecast</CardTitle>
+            <Badge variant="outline" className="text-xs bg-yellow-500/20 text-yellow-400 border-yellow-500/30 animate-pulse">
               Based on June Orders
             </Badge>
           </div>
-          
           <div className="flex items-center space-x-2">
             <Select value={selectedFilter} onValueChange={(value: any) => setSelectedFilter(value)}>
               <SelectTrigger className="w-32 bg-background border-input">
@@ -166,7 +165,6 @@ const SalesForecast: React.FC = () => {
                 <SelectItem value="premium">Premium Users</SelectItem>
               </SelectContent>
             </Select>
-            
             <Select value={chartType} onValueChange={(value: any) => setChartType(value)}>
               <SelectTrigger className="w-20 bg-background border-input">
                 <SelectValue />
@@ -179,8 +177,7 @@ const SalesForecast: React.FC = () => {
           </div>
         </div>
       </CardHeader>
-      
-      <CardContent>
+      <CardContent className="z-10 relative">
         <div className="h-80 w-full">
           <ResponsiveContainer width="100%" height="100%">
             {chartType === 'line' ? (
@@ -192,17 +189,17 @@ const SalesForecast: React.FC = () => {
                 <Line 
                   type="monotone" 
                   dataKey="revenue" 
-                  stroke="hsl(var(--primary))" 
-                  strokeWidth={2}
+                  stroke="#EAB308"
+                  strokeWidth={3}
                   dot={(props) => {
                     const { payload } = props;
                     return (
                       <circle 
                         {...props}
-                        fill={payload.type === 'predicted' ? '#EAB308' : 'hsl(var(--primary))'}
-                        stroke={payload.type === 'predicted' ? '#EAB308' : 'hsl(var(--primary))'}
+                        fill={payload.type === 'predicted' ? '#EAB308' : '#22d3ee'}
+                        stroke={payload.type === 'predicted' ? '#EAB308' : '#22d3ee'}
                         strokeWidth={2}
-                        r={4}
+                        r={6}
                       />
                     );
                   }}
@@ -218,7 +215,7 @@ const SalesForecast: React.FC = () => {
                   {generateRealData.map((entry, index) => (
                     <Cell 
                       key={`cell-${index}`} 
-                      fill={entry.type === 'predicted' ? '#EAB308' : 'hsl(var(--primary))'} 
+                      fill={entry.type === 'predicted' ? '#EAB308' : '#22d3ee'} 
                     />
                   ))}
                 </Bar>
@@ -226,15 +223,14 @@ const SalesForecast: React.FC = () => {
             )}
           </ResponsiveContainer>
         </div>
-        
-        <div className="mt-4 p-3 bg-yellow-500/10 border border-yellow-500/20 rounded-lg">
-          <div className="flex items-center space-x-2 text-yellow-400">
-            <Info className="w-4 h-4" />
-            <span className="text-sm font-medium">Real Data Analysis</span>
+        <div className="mt-4 p-4 bg-gradient-to-r from-yellow-500/10 via-purple-500/10 to-red-500/10 border border-yellow-500/20 rounded-lg shadow-inner flex items-center gap-3">
+          <Info className="w-5 h-5 text-yellow-400 animate-spin-slow" />
+          <div>
+            <span className="text-sm font-semibold text-yellow-400">Real Data Analysis</span>
+            <p className="text-xs text-muted-foreground mt-1">
+              June shows actual order data. July-August predictions based on June performance with 10-20% growth projection.
+            </p>
           </div>
-          <p className="text-xs text-muted-foreground mt-1">
-            June shows actual order data. July-August predictions based on June performance with 10-20% growth projection.
-          </p>
         </div>
       </CardContent>
     </Card>

@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -426,7 +425,7 @@ const Cart: React.FC = () => {
                   <SelectContent className="galaxy-card border-galaxy-purple-light/20">
                     {shippingLocations.map((location) => (
                       <SelectItem key={location.name} value={location.name}>
-                        {location.name} - ₹{location.cost}, {location.days} days
+                        {location.name} - ${location.cost.toFixed(2)}, {location.days} days
                       </SelectItem>
                     ))}
                   </SelectContent>
@@ -435,7 +434,7 @@ const Cart: React.FC = () => {
                   <div className="mt-2 p-2 bg-galaxy-gold/10 rounded text-sm">
                     <p className="text-galaxy-gold">
                       <Truck className="w-4 h-4 inline mr-1" />
-                      Delivery in {shippingInfo.days} days - ₹{shippingInfo.cost}
+                      Delivery in {shippingInfo.days} days - ${shippingInfo.cost.toFixed(2)}
                     </p>
                   </div>
                 )}

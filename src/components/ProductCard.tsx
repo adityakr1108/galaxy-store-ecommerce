@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -99,9 +98,20 @@ export const ProductCard: React.FC<ProductCardProps> = ({
 
   const isOutOfStock = !product.inStock || product.stock <= 0;
   const isPremiumProduct = product.isPremiumExclusive;
+  const isTrendingProduct = product.isTrending;
+
+  // Card style logic for premium and trending
+  let cardClass = 'theme-card';
+  if (isPremiumProduct && isTrendingProduct) {
+    cardClass = 'combo-card';
+  } else if (isPremiumProduct) {
+    cardClass = 'premium-card';
+  } else if (isTrendingProduct) {
+    cardClass = 'trending-card';
+  }
 
   return (
-    <Card className={`${isPremiumProduct ? 'premium-card' : 'theme-card'} group hover:scale-[1.02] transition-all duration-300 overflow-hidden flex flex-col h-full`}>
+    <Card className={`${cardClass} group hover:scale-[1.02] transition-all duration-300 overflow-hidden flex flex-col h-full`}>
       <div className="relative">
         <Link to={`/product/${product.id}`}>
           <div className="aspect-square overflow-hidden">
@@ -113,23 +123,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           </div>
         </Link>
         
-        {/* Badges */}
-        <div className="absolute top-3 left-3 space-y-1">
-          {product.isTrending && (
-            <Badge className="bg-red-500 text-white font-semibold text-xs animate-pulse">
-              <TrendingUp className="w-3 h-3 mr-1" />
-              Trending
-            </Badge>
-          )}
-          {isPremiumProduct && (
-            <Badge className={`${user?.isPremium ? 'bg-premium-gold text-black' : 'bg-gray-500 text-white'} font-semibold text-xs`}>
-              <Star className="w-3 h-3 mr-1" />
-              Premium
-            </Badge>
-          )}
-          {getStockBadge()}
-        </div>
-
         {/* Wishlist Button */}
         <button
           onClick={handleWishlistToggle}
@@ -186,9 +179,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           className={`w-full transition-all duration-300 ${
             isOutOfStock 
               ? 'bg-gray-600 cursor-not-allowed opacity-50' 
-              : isPremiumProduct && user?.isPremium
-                ? 'btn-premium'
-                : 'btn-primary'
+              : isPremiumProduct && isTrendingProduct
+                ? 'btn-combo'
+                : isPremiumProduct && user?.isPremium
+                  ? 'btn-premium'
+                  : isTrendingProduct
+                    ? 'btn-trending'
+                    : 'btn-primary'
           }`}
         >
           <Package className="w-4 h-4 mr-2" />

@@ -64,7 +64,7 @@ export const Navbar: React.FC = () => {
             </div>
 
             {/* Search Bar */}
-            <form onSubmit={handleSearch} className="hidden md:flex items-center space-x-2 flex-1 max-w-md mx-8">
+            {/* <form onSubmit={handleSearch} className="hidden md:flex items-center space-x-2 flex-1 max-w-md mx-8">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <Input
@@ -75,7 +75,7 @@ export const Navbar: React.FC = () => {
                   onChange={(e) => setSearchQuery(e.target.value)}
                 />
               </div>
-            </form>
+            </form> */}
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">

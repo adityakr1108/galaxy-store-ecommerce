@@ -577,14 +577,14 @@ class Database {
     const shippingLocations = this.getShippingLocations();
     if (shippingLocations.length === 0) {
       localStorage.setItem('galaxy_store_shipping_locations', JSON.stringify([
-        { name: 'Delhi', cost: 50, days: 2 },
-        { name: 'Mumbai', cost: 60, days: 3 },
-        { name: 'Bangalore', cost: 55, days: 2 },
-        { name: 'Chennai', cost: 65, days: 3 },
-        { name: 'Kolkata', cost: 70, days: 4 },
-        { name: 'Hyderabad', cost: 60, days: 3 },
-        { name: 'Pune', cost: 55, days: 2 },
-        { name: 'Remote', cost: 100, days: 5 }
+        { name: 'California', cost: 50.00, days: 2 },
+        { name: 'Texas', cost: 60.00, days: 3 },
+        { name: 'New York', cost: 55.00, days: 2 },
+        { name: 'Florida', cost: 65.00, days: 3 },
+        { name: 'Illinois', cost: 70.00, days: 4 },
+        { name: 'Washington', cost: 60.00, days: 3 },
+        { name: 'Colorado', cost: 55.00, days: 2 },
+        { name: 'Remote', cost: 100.00, days: 5 }
       ]));
     }
 
@@ -612,14 +612,6 @@ class Database {
         description: 'Special Deals for Premium Members',
         imageUrl: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=1200&h=400&fit=crop',
         link: '/shop?premium=true',
-        isActive: true
-      });
-
-      this.createPromoBanner({
-        title: 'Coupon Deals',
-        description: 'Apply Coupons at Checkout - Save More!',
-        imageUrl: 'https://downloadpsd.cc/wp-content/uploads/2020/07/Free-Discount-Coupons-Template-PSD.jpg',
-        link: '/cart',
         isActive: true
       });
     }

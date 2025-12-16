@@ -299,7 +299,7 @@ const Shop: React.FC = () => {
                     onCheckedChange={handleTrendingOnlyChange}
                   />
                   <Label htmlFor="trending-only" className="text-white">
-                    🔥 Trending Only
+                   Trending Only
                   </Label>
                 </div>
 
@@ -311,7 +311,7 @@ const Shop: React.FC = () => {
                       onCheckedChange={handlePremiumOnlyChange}
                     />
                     <Label htmlFor="premium-only" className="text-galaxy-gold">
-                      <Star className="w-4 h-4 inline mr-1" />
+                      {/* <Star className="w-4 h-4 inline mr-1" /> */}
                       Premium Only
                     </Label>
                   </div>
