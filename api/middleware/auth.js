@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+const jwt = require('jsonwebtoken');
+const User = require('../models/User.js');
 
-export const auth = async (req, res, next) => {
+const auth = async (req, res, next) => {
   try {
     const token = req.header('Authorization')?.replace('Bearer ', '');
 
@@ -24,7 +24,7 @@ export const auth = async (req, res, next) => {
   }
 };
 
-export const adminAuth = async (req, res, next) => {
+const adminAuth = async (req, res, next) => {
   try {
     await auth(req, res, () => {
       if (!req.user.isAdmin) {
@@ -38,7 +38,7 @@ export const adminAuth = async (req, res, next) => {
   }
 };
 
-export const premiumAuth = async (req, res, next) => {
+const premiumAuth = async (req, res, next) => {
   try {
     await auth(req, res, () => {
       if (!req.user.isPremium && !req.user.isAdmin) {
@@ -51,3 +51,5 @@ export const premiumAuth = async (req, res, next) => {
     res.status(401).json({ error: 'Authentication failed.' });
   }
 };
+
+module.exports = { auth, adminAuth, premiumAuth };

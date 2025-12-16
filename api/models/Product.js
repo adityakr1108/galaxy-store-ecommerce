@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const productSchema = new mongoose.Schema({
   name: {
@@ -94,4 +94,4 @@ productSchema.index({ price: 1 });
 productSchema.index({ rating: -1 });
 productSchema.index({ name: 'text', description: 'text' }); // Text search
 
-export default mongoose.model('Product', productSchema);
+module.exports = mongoose.model('Product', productSchema);

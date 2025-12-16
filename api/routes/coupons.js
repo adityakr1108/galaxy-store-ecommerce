@@ -1,7 +1,7 @@
-import express from 'express';
-import Coupon from '../models/Coupon.js';
-import { adminAuth } from '../middleware/auth.js';
-import { body, validationResult } from 'express-validator';
+const express = require('express');
+const Coupon = require('../models/Coupon.js');
+const { adminAuth  } = require('../middleware/auth.js');
+const { body, validationResult  } = require('express-validator');
 
 const router = express.Router();
 
@@ -125,4 +125,4 @@ router.delete('/:id', adminAuth, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

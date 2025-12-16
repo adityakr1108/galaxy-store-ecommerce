@@ -1,8 +1,8 @@
-import express from 'express';
-import Wishlist from '../models/Wishlist.js';
-import Product from '../models/Product.js';
-import { auth } from '../middleware/auth.js';
-import { body, validationResult } from 'express-validator';
+const express = require('express');
+const Wishlist = require('../models/Wishlist.js');
+const Product = require('../models/Product.js');
+const { auth  } = require('../middleware/auth.js');
+const { body, validationResult  } = require('express-validator');
 
 const router = express.Router();
 
@@ -91,4 +91,4 @@ router.delete('/', auth, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

@@ -1,7 +1,7 @@
-import express from 'express';
-import { body, validationResult, query } from 'express-validator';
-import Product from '../models/Product.js';
-import { auth, adminAuth, premiumAuth } from '../middleware/auth.js';
+const express = require('express');
+const { body, validationResult, query  } = require('express-validator');
+const Product = require('../models/Product.js');
+const { auth, adminAuth, premiumAuth  } = require('../middleware/auth.js');
 
 const router = express.Router();
 
@@ -273,4 +273,4 @@ router.patch('/:id/stock', adminAuth, [
   }
 });
 
-export default router;
+module.exports = router;

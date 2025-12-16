@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
   name: {
@@ -44,4 +44,4 @@ userSchema.index({ email: 1 });
 userSchema.index({ isPremium: 1 });
 userSchema.index({ isAdmin: 1 });
 
-export default mongoose.model('User', userSchema);
+module.exports = mongoose.model('User', userSchema);

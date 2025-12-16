@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const shippingLocationSchema = new mongoose.Schema({
   name: {
@@ -28,4 +28,4 @@ const shippingLocationSchema = new mongoose.Schema({
 shippingLocationSchema.index({ name: 1 });
 shippingLocationSchema.index({ isActive: 1 });
 
-export default mongoose.model('ShippingLocation', shippingLocationSchema);
+module.exports = mongoose.model('ShippingLocation', shippingLocationSchema);

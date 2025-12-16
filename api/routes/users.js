@@ -1,6 +1,6 @@
-import express from 'express';
-import User from '../models/User.js';
-import { auth, adminAuth } from '../middleware/auth.js';
+const express = require('express');
+const User = require('../models/User.js');
+const { auth, adminAuth  } = require('../middleware/auth.js');
 
 const router = express.Router();
 
@@ -57,4 +57,4 @@ router.patch('/:id/premium', adminAuth, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

@@ -1,19 +1,19 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 
 // Import routes
-import authRoutes from './routes/auth.js';
-import productRoutes from './routes/products.js';
-import orderRoutes from './routes/orders.js';
-import userRoutes from './routes/users.js';
-import couponRoutes from './routes/coupons.js';
-import cartRoutes from './routes/cart.js';
-import wishlistRoutes from './routes/wishlist.js';
-import adminRoutes from './routes/admin.js';
+const authRoutes = require('./routes/auth.js');
+const productRoutes = require('./routes/products.js');
+const orderRoutes = require('./routes/orders.js');
+const userRoutes = require('./routes/users.js');
+const couponRoutes = require('./routes/coupons.js');
+const cartRoutes = require('./routes/cart.js');
+const wishlistRoutes = require('./routes/wishlist.js');
+const adminRoutes = require('./routes/admin.js');
 
 dotenv.config();
 
@@ -114,4 +114,4 @@ startServer().catch(error => {
 });
 
 // Export for Vercel
-export default app;
+module.exports = app;

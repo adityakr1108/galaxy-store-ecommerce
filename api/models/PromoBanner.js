@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const promoBannerSchema = new mongoose.Schema({
   title: {
@@ -37,4 +37,4 @@ const promoBannerSchema = new mongoose.Schema({
 promoBannerSchema.index({ isActive: 1 });
 promoBannerSchema.index({ order: 1 });
 
-export default mongoose.model('PromoBanner', promoBannerSchema);
+module.exports = mongoose.model('PromoBanner', promoBannerSchema);

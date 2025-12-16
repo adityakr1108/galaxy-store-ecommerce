@@ -1,9 +1,9 @@
-import express from 'express';
-import User from '../models/User.js';
-import Order from '../models/Order.js';
-import Product from '../models/Product.js';
-import Coupon from '../models/Coupon.js';
-import { adminAuth } from '../middleware/auth.js';
+const express = require('express');
+const User = require('../models/User.js');
+const Order = require('../models/Order.js');
+const Product = require('../models/Product.js');
+const Coupon = require('../models/Coupon.js');
+const { adminAuth  } = require('../middleware/auth.js');
 
 const router = express.Router();
 
@@ -178,4 +178,4 @@ router.get('/analytics', adminAuth, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;

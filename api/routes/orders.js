@@ -1,9 +1,9 @@
-import express from 'express';
-import Order from '../models/Order.js';
-import Product from '../models/Product.js';
-import Cart from '../models/Cart.js';
-import { auth, adminAuth } from '../middleware/auth.js';
-import { body, validationResult } from 'express-validator';
+const express = require('express');
+const Order = require('../models/Order.js');
+const Product = require('../models/Product.js');
+const Cart = require('../models/Cart.js');
+const { auth, adminAuth  } = require('../middleware/auth.js');
+const { body, validationResult  } = require('express-validator');
 
 const router = express.Router();
 
@@ -181,4 +181,4 @@ router.get('/admin/all', adminAuth, async (req, res) => {
   }
 });
 
-export default router;
+module.exports = router;
